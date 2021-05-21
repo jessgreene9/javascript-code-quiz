@@ -19,12 +19,14 @@ timeCountEl.textContent= timer;
 
 function startTimer() {
     var timerCount = setInterval(function() {
+        timeCountEl.textContent
         timer--;
-        if (timer > 0) {
+        if (timer >= 0) {
          timeCountEl.textContent = timer;
         } else{
         
        clearInterval(timerCount);
+       endGame()
     }
 }, 1000);
 
@@ -68,15 +70,20 @@ function selectAnswer(event) {
 
    //check if any questions are left
     questionIndex++;
-    showQuestion();
+
+    if (questionBank.length >= questionIndex){
+    showQuestion();} else {
+        endGame();
+    }
 
 
 }
 
-function endGame () {
-    if (questionBank.length > questionIndex +1) {
-        display.textContent = "Game Ended";
-    }
+function endGame() {
+    
+        answerButtonsEl.classList.add('hide');
+        questionsEl.classList.add('hide');
+    
 }
 
 

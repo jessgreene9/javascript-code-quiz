@@ -16,25 +16,48 @@ h1 {
   justify-content: center;
   text-align: center;
   margin: 0 auto;
+  font-size: 30px;
 }
 
 .container {
   background-color: lightgrey;
+  height: 100vh;
+  text-align: center;
+  
+}
 
-  font-size: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0 auto;
+.controls {
+  margin: 100px auto;
+
+}
+
+#start {
+  font-size: 40px;
+}
+
+#hall0fFame {
+  font-size: 40px;
+}
+
+#scores {
+  font-size:30px;
+}
+
+input {
+  font-size:30px;
+}
+
+#submit {
+  font-size:30px;
 }
 
 #question-card {
   width: 400px;
   height: 400px;
-  display: flex;
-  justify-content: center;
+  display: inline;
   align-items: center;
-  margin: 0 auto;
+  justify-content: center;
+  margin: 50px auto;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 10px 2px;
@@ -46,11 +69,11 @@ h1 {
   grid-template-columns: repeat(2, auto);
 }
 
-.timer,
-.timer-text,
-.timer-count {
+.timer
+ {
   display: flex;
   justify-content: flex-start;
+  font-size:50px;
 }
 
 .hide {

@@ -6,10 +6,12 @@ var timeCountEl = document.querySelector(".timer-count");
 var scoreEl = document.querySelector("#score");
 var resultEl = document.querySelector("#result");
 var formEl = document.querySelector("#high-scores");
+var highscoresEl = document.querySelector("#hall0fFame");
+
 
 
 var count = 0;
-var timer = 4;
+var timer = 60;
 var questionIndex = 0;
 var score = 0;
 var timerInterval;
@@ -126,16 +128,8 @@ function selectAnswer(event) {
     //check to see if right or wrong
     var element = event.target;
     if (element.matches(".ans-button")){
-        var index = parseInt(element.dataset.index);
-        
-        
-        questionIndex++;
-        //check if any questions are left
-        if (questionBank.length <= questionIndex) {
-            endGame();
-            clearInterval(timerInterval);
-            
-        } else {
+        var index = parseInt(element.dataset.index);     
+        }
             var isCorrect = questionBank[questionIndex].answers[index].correct;
             if (isCorrect) {
                 resultEl.textContent ="Correct!";
@@ -143,18 +137,24 @@ function selectAnswer(event) {
                 resultEl.textContent ="Wrong!";
                 timer -= 10;
             }
+            questionIndex++;
+            //check if any questions are left
+            if (questionBank.length <= questionIndex) {
+                endGame();
+                clearInterval(timerInterval);} else {
             showQuestion();
-        }
-        
-    
+        }  
     }
-}
+
 
 function endGame() {
 
     console.log ("End of Game");
    formEl.classList.remove('hide');
-    
+   questionContainerEl.classList.add('hide');
+    timeCountEl.classList.add('hide');
+    highscoresEl.classList.remove('hide');
+    resultEl.classList.add('hide');
 
 }
 

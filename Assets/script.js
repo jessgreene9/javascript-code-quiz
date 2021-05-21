@@ -30,10 +30,10 @@ function startTimer() {
 
 }
 
-var selectedAnswer = function(){
+
 for ( var i= 0; i<answerButtonsEl.length; i++) {
     answerButtonsEl[i].addEventListener("click", selectAnswer);   
-}}
+}
 
 function startGame() {
     startEl.classList.add('hide');
@@ -57,20 +57,26 @@ function showQuestion() {
 }
 
 
-function selectAnswer() {
+function selectAnswer(event) {
    //check to see if right or wrong
-    if (selectedAnswer=== true){
-        answerButtonsEl.textContent ="Correct!"
-    } else {
-        answerButtonsEl.textContent ="Wrong!"
-        timer -= 10;
-    }
+   var selectedAnswer = event.target;
+   var index = selectedAnswer.
+    
+    
+   timer -= 10;
+    
 
    //check if any questions are left
     questionIndex++;
     showQuestion();
 
 
+}
+
+function endGame () {
+    if (questionBank.length > questionIndex +1) {
+        display.textContent = "Game Ended";
+    }
 }
 
 

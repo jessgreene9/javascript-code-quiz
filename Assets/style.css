@@ -1,5 +1,5 @@
 * {
-
+box-sizing: border-box;
 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
@@ -7,25 +7,54 @@ h1 {
 display: flex;
 justify-content:center;
 text-align: center;
+margin: 0 auto;
+}
+
+#questions {
+    display: flex;
+justify-content:center;
+text-align: center;
+margin: 0 auto;
 }
 
 
+    .container {
+        
+       
+        background-color: lightgrey;
 
-.container {
-    border: 5px inset;
-    width: 700px;
-    height: 500px;
-    max-width: 85%;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0 auto;
-    display: inline-block;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0 auto;
+}
+
+#question-card {
+    width: 400px;
+        height: 400px;
+    display: flex;
     justify-content:center;
     align-items: center;
-    font-size: 30px;
+    margin: 0 auto;
+    border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 10px 2px;
+        background-color: aqua;
+
+
 }
 
 #answer {
     display: grid;
     grid-template-columns: repeat(2, auto);
+}
+
+.timer, .timer-text, .timer-count {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hide {
+    display: none !important;
 }

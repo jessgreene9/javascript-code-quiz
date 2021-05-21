@@ -4,94 +4,15 @@ var questionsEl = document.getElementById("questions");
 var answerButtonsEl = document.querySelectorAll(".ans-button");
 var timeCountEl = document.querySelector(".timer-count");
 var scoreEl = document.querySelector("#score");
+var resultEl = document.querySelector("#result");
+var formEl = document.querySelector("#high-scores");
 
 
 var count = 0;
-var timer = 60;
+var timer = 4;
 var questionIndex = 0;
-
-
-
-
-startEl.addEventListener("click", startGame);
-
-timeCountEl.textContent = timer;
-
-function startTimer() {
-    var timerCount = setInterval(function () {
-        timeCountEl.textContent
-        timer--;
-        if (timer >= 0) {
-            timeCountEl.textContent = timer;
-        } else {
-
-            clearInterval(timerCount);
-            endGame()
-        }
-    }, 1000);
-
-}
-
-
-for (var i = 0; i < answerButtonsEl.length; i++) {
-    answerButtonsEl[i].addEventListener("click", selectAnswer);
-}
-
-function startGame() {
-    startEl.classList.add('hide');
-    questionContainerEl.classList.remove('hide');
-    startTimer();
-    showQuestion();
-
-
-}
-
-
-
-
-function showQuestion() {
-    questionsEl.textContent = questionBank[questionIndex].question;
-
-    for (var i = 0; i < answerButtonsEl.length; i++) {
-        answerButtonsEl[i].textContent = questionBank[questionIndex].answers[i].option;
-    }
-
-}
-
-
-function selectAnswer(event) {
-    //check to see if right or wrong
-    var selectedAnswer = event.target;
-    var index = selectedAnswer.
-
-
-        timer -= 10;
-
-
-    //check if any questions are left
-    questionIndex++;
-
-    if (questionBank.length >= questionIndex) {
-        showQuestion();
-    } else {
-        endGame();
-    }
-
-
-}
-
-function endGame() {
-
-    answerButtonsEl.classList.add('hide');
-    questionsEl.classList.add('hide');
-
-}
-
-
-
-
-
-
+var score = 0;
+var timerInterval;
 
 var questionBank = [
     {
@@ -157,3 +78,89 @@ var questionBank = [
     },
 
 ]
+
+startEl.addEventListener("click", startGame);
+
+
+
+function startTimer() {
+    timeCountEl.textContent = timer;
+    timerInterval = setInterval(function () {
+        timer--;
+        if (timer > 0) {
+            timeCountEl.textContent = timer;
+        } else {
+            timeCountEl.textContent = timer;
+            clearInterval(timerInterval);
+            endGame()
+        }
+    }, 1000);
+
+}
+
+
+
+
+function startGame() {
+    startEl.classList.add('hide');
+    questionContainerEl.classList.remove('hide');
+    startTimer();
+    showQuestion();
+
+
+}
+
+document.addEventListener("click", selectAnswer);
+
+function showQuestion() {
+    questionsEl.textContent = questionBank[questionIndex].question;
+
+    for (var i = 0; i < answerButtonsEl.length; i++) {
+        answerButtonsEl[i].textContent = questionBank[questionIndex].answers[i].option;
+    }
+
+}
+
+
+function selectAnswer(event) {
+    //check to see if right or wrong
+    var element = event.target;
+    if (element.matches(".ans-button")){
+        var index = parseInt(element.dataset.index);
+        
+        
+        questionIndex++;
+        //check if any questions are left
+        if (questionBank.length <= questionIndex) {
+            endGame();
+            clearInterval(timerInterval);
+            
+        } else {
+            var isCorrect = questionBank[questionIndex].answers[index].correct;
+            if (isCorrect) {
+                resultEl.textContent ="Correct!";
+            } else {
+                resultEl.textContent ="Wrong!";
+                timer -= 10;
+            }
+            showQuestion();
+        }
+        
+    
+    }
+}
+
+function endGame() {
+
+    console.log ("End of Game");
+   formEl.classList.remove('hide');
+    
+
+}
+
+
+
+
+
+
+

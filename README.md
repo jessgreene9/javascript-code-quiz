@@ -23,8 +23,10 @@ When the application is opened in the browser, you must click the start button t
 
 ## Screenshots
 
-
-<img src="./assets/images/screenshot.png">
+<img src="./Assets/images/screenshot-start.png">
+<img src="./Assets/images/Screenshot.png">
+<img src = "./Assets/images/Screenshot-end-of-game.png">
+<img src="./Assets/images/screen-shot-high-scores.png">
 
 
 

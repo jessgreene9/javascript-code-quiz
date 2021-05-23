@@ -5,14 +5,23 @@
     
 }
 
-
+.ans-button {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  margin-top: 10px;
+}
 
 
 h1 {
   display: flex;
   justify-content: center;
-  text-align: center;
-  margin: 0 auto;
+  text-align:center;
+
+  
+  background-color: rgb(207, 144, 60);
+  height: auto;
+  font-size: 35px;
+  padding: 30px;
 }
 
 #questions {
@@ -23,16 +32,13 @@ h1 {
   font-size: 30px;
 }
 
-.ans-button {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  margin-top: 10px;
-}
+
 
 .container {
-  background-color: lightgrey;
+  background-color: rgb(131, 172, 199);
   height: 100vh;
   text-align: center;
+  margin: 0 auto;
 }
 
 .controls {
@@ -41,6 +47,7 @@ h1 {
 
 #start {
   font-size: 40px;
+  background-color: teal
 }
 
 #hall0fFame {
@@ -82,6 +89,7 @@ input {
   display: flex;
   justify-content: flex-start;
   font-size: 50px;
+  padding: 30px;
 }
 
 .hide {
@@ -93,9 +101,15 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-color: yellowgreen;
+  margin: 0 auto;
+  height: 100vh;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #topscores {
+
 font-size: 20px; 
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }

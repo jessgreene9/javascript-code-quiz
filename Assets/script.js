@@ -114,14 +114,6 @@ function startGame() {
   showQuestion();
 }
 
-function renderTopScores() {
-  for (var item of scoreboard) {
-    var liEl = document.createElement("li");
-    liEl.textContent = item.initials + ":" + item.score;
-    topScoresEl.appendChild(liEl);
-  }
-}
-
 function showQuestion() {
   questionsEl.textContent = questionBank[questionIndex].question;
 
@@ -131,30 +123,40 @@ function showQuestion() {
   }
 }
 
+
 function selectAnswer(event) {
-  //check to see if right or wrong
-  var element = event.target;
-  if (element.matches(".ans-button")) {
-    var index = parseInt(element.dataset.index);
-  }
-  var isCorrect = questionBank[questionIndex].answers[index].correct;
-  if (isCorrect) {
-    resultEl.textContent = "Correct!";
-  } else {
-    resultEl.textContent = "Wrong!";
-    timer -= 10;
-  }
-  questionIndex++;
-  //check if any questions are left
-  if (questionBank.length <= questionIndex) {
-    endGame();
-    clearInterval(timerInterval);
-  } else {
-    showQuestion();
+    //check to see if right or wrong
+    var element = event.target;
+    if (element.matches(".ans-button")) {
+        var index = parseInt(element.dataset.index);
+    }
+    var isCorrect = questionBank[questionIndex].answers[index].correct;
+    if (isCorrect) {
+        resultEl.textContent = "Correct!";
+    } else {
+        resultEl.textContent = "Wrong!";
+        timer -= 10;
+    }
+    questionIndex++;
+    //check if any questions are left
+    if (questionBank.length <= questionIndex) {
+        endGame();
+        clearInterval(timerInterval);
+    } else {
+        showQuestion();
+    }
+}
+
+function renderTopScores() {
+  for (var item of scoreboard) {
+    var liEl = document.createElement("li");
+    liEl.textContent = item.initials + ":" + item.score;
+    topScoresEl.appendChild(liEl);
   }
 }
+
 function endGame() {
-  console.log("End of Game");
+    console.log("End of Game");
   endgameEl.textContent = "End of Game";
   formEl.classList.remove("hide");
   questionContainerEl.classList.add("hide");

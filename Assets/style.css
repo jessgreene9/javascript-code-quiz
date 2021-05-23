@@ -19,16 +19,20 @@ h1 {
   font-size: 30px;
 }
 
+.ans-button {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  margin-top: 10px;
+}
+
 .container {
   background-color: lightgrey;
   height: 100vh;
   text-align: center;
-  
 }
 
 .controls {
   margin: 100px auto;
-
 }
 
 #start {
@@ -40,18 +44,19 @@ h1 {
 }
 
 #scores {
-  font-size:30px;
+  font-size: 30px;
 }
 
 input {
-  font-size:30px;
+  font-size: 30px;
 }
 
 #submit {
-  font-size:30px;
+  font-size: 30px;
 }
 
 #question-card {
+  box-sizing: border-box;
   width: 400px;
   height: 400px;
   display: inline;
@@ -69,11 +74,10 @@ input {
   grid-template-columns: repeat(2, auto);
 }
 
-.timer
- {
+.timer {
   display: flex;
   justify-content: flex-start;
-  font-size:50px;
+  font-size: 50px;
 }
 
 .hide {

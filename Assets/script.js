@@ -105,9 +105,7 @@ function startTimer() {
     }
   }, 1000);
 }
-if (topScoresEl) {
-  renderTopScore();
-}
+
 
 function startGame() {
   startEl.classList.add("hide");
@@ -116,10 +114,10 @@ function startGame() {
   showQuestion();
 }
 
-function renderTopScore() {
+function renderTopScores() {
   for (var item of scoreboard) {
     var liEl = document.createElement("li");
-    liEl.textContent = score.initials + ":" + item.score;
+    liEl.textContent = item.initials + ":" + item.score;
     topScoresEl.appendChild(liEl);
   }
 }
@@ -172,9 +170,9 @@ if (formEl) {
     event.preventDefault();
     var initials = inputEl.value;
     var data = { initials: initials, score: timer };
-    console.log("submit", data);
     scoreboard = scoreboard.concat(data);
-    localStorage.setItem("scoreboard", JSON.stringify(scoreboard.concat(data)));
+    localStorage.setItem("scoreboard", JSON.stringify(scoreboard));
+    
   });
 
   document.addEventListener("click", selectAnswer);

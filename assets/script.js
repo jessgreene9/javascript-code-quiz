@@ -11,6 +11,7 @@ var highScoresEl = document.querySelector("#hall0fFame");
 var endgameEl = document.querySelector("#endgame");
 var inputEl = document.querySelector("input[type=text]");
 var topScoresEl = document.querySelector("#topscores");
+var submitBtnEl = document.querySelector("#submit");
 
 //creates variables needed for application
 var count = 0;
@@ -152,7 +153,6 @@ function selectAnswer(event) {
       showQuestion();
     }
   }
-
 }
 
 //appends items to the high score page
@@ -186,7 +186,11 @@ if (formEl) {
     var data = { initials: initials, score: timer };
     scoreboard = scoreboard.concat(data);
     localStorage.setItem("scoreboard", JSON.stringify(scoreboard));
+    inputEl.value='';
+    location.replace("./high-scores.html");
   });
   //takes user to next question
   document.addEventListener("click", selectAnswer);
+
+
 }

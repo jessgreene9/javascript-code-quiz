@@ -2,7 +2,6 @@
   box-sizing: border-box;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    
 }
 
 .ans-button {
@@ -11,13 +10,11 @@
   margin-top: 10px;
 }
 
-
 h1 {
   display: flex;
   justify-content: center;
-  text-align:center;
+  text-align: center;
 
-  
   background-color: rgb(207, 144, 60);
   height: auto;
   font-size: 35px;
@@ -32,8 +29,6 @@ h1 {
   font-size: 30px;
 }
 
-
-
 .container {
   background-color: rgb(131, 172, 199);
   height: 100vh;
@@ -47,7 +42,7 @@ h1 {
 
 #start {
   font-size: 40px;
-  background-color: teal
+  background-color: teal;
 }
 
 #hall0fFame {
@@ -104,12 +99,12 @@ main {
   background-color: yellowgreen;
   margin: 0 auto;
   height: 100vh;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 #topscores {
-
-font-size: 20px; 
-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

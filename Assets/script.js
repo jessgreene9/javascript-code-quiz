@@ -1,3 +1,4 @@
+// sets variables to grab items from html document
 var startEl = document.getElementById("start");
 var questionContainerEl = document.getElementById("question-card");
 var questionsEl = document.getElementById("questions");
@@ -11,14 +12,17 @@ var endgameEl = document.querySelector("#endgame");
 var inputEl = document.querySelector("input[type=text]");
 var topScoresEl = document.querySelector("#topscores");
 
+//creates variables needed for application
 var count = 0;
 var timer = 60;
 var questionIndex = 0;
 var score = [];
 var timerInterval;
 
+// grabs stored information from local storage
 var scoreboard = JSON.parse(localStorage.getItem("scoreboard")) || [];
 
+//questions for the quiz
 var questionBank = [
   {
     question: "What is an Event Listener?",
@@ -92,6 +96,7 @@ var questionBank = [
   },
 ];
 
+// function to begin timer
 function startTimer() {
   timeCountEl.textContent = timer;
   timerInterval = setInterval(function () {
@@ -106,7 +111,7 @@ function startTimer() {
   }, 1000);
 }
 
-
+//upon the click event, the start game function begins
 function startGame() {
   startEl.classList.add("hide");
   questionContainerEl.classList.remove("hide");
@@ -114,6 +119,7 @@ function startGame() {
   showQuestion();
 }
 
+//cycles through the bank of questions
 function showQuestion() {
   questionsEl.textContent = questionBank[questionIndex].question;
 
@@ -123,30 +129,30 @@ function showQuestion() {
   }
 }
 
-
 function selectAnswer(event) {
-    //check to see if right or wrong
-    var element = event.target;
-    if (element.matches(".ans-button")) {
-        var index = parseInt(element.dataset.index);
-    }
-    var isCorrect = questionBank[questionIndex].answers[index].correct;
-    if (isCorrect) {
-        resultEl.textContent = "Correct!";
-    } else {
-        resultEl.textContent = "Wrong!";
-        timer -= 10;
-    }
-    questionIndex++;
-    //check if any questions are left
-    if (questionBank.length <= questionIndex) {
-        endGame();
-        clearInterval(timerInterval);
-    } else {
-        showQuestion();
-    }
+  //check to see if right or wrong
+  var element = event.target;
+  if (element.matches(".ans-button")) {
+    var index = parseInt(element.dataset.index);
+  }
+  var isCorrect = questionBank[questionIndex].answers[index].correct;
+  if (isCorrect) {
+    resultEl.textContent = "Correct!";
+  } else {
+    resultEl.textContent = "Wrong!";
+    timer -= 10;
+  }
+  questionIndex++;
+  //check if any questions are left
+  if (questionBank.length <= questionIndex) {
+    endGame();
+    clearInterval(timerInterval);
+  } else {
+    showQuestion();
+  }
 }
 
+//appends items to the high score page
 function renderTopScores() {
   for (var item of scoreboard) {
     var liEl = document.createElement("li");
@@ -155,8 +161,9 @@ function renderTopScores() {
   }
 }
 
+//signals the end of game and prompts input
 function endGame() {
-    console.log("End of Game");
+  console.log("End of Game");
   endgameEl.textContent = "End of Game";
   formEl.classList.remove("hide");
   questionContainerEl.classList.add("hide");
@@ -166,16 +173,17 @@ function endGame() {
 }
 
 if (formEl) {
+  //starts game upon click
   startEl.addEventListener("click", startGame);
 
+  //stores into local storage upon hitting submit
   formEl.addEventListener("submit", function (event) {
     event.preventDefault();
     var initials = inputEl.value;
     var data = { initials: initials, score: timer };
     scoreboard = scoreboard.concat(data);
     localStorage.setItem("scoreboard", JSON.stringify(scoreboard));
-    
   });
-
+  //takes user to next question
   document.addEventListener("click", selectAnswer);
 }
